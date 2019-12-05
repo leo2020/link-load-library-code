@@ -7,7 +7,8 @@ gcc -c a.c b.c
 
 split
 echo "链接a.o/b.o:"
-ld -lSystem a.o b.o -o ab.o
+#ld -lSystem a.o b.o -o ab.o
+ld a.o b.o -o ab.o
 
 split
 echo "a.o的段属性"
