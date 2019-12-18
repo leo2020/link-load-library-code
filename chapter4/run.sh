@@ -1,7 +1,12 @@
 #!/bin/sh
 split(){
-	echo "------------------------------------------------------------------------"
+	echo "  ---------------------------------------------"
 }
+
+split_bold(){
+	echo "##############################################################################"
+}
+
 
 is_mac(){
 	os=`uname  -a`	
@@ -19,38 +24,50 @@ echo "链接a.o/b.o:"
 #ld -static -m elf_i386 -e main -fno-stack-protector b.o a.o -o ab
 ld -static -m elf_i386 -e main b.o a.o -o ab
 
-split
+####################################
+
+echo "a.o的所有"
+split_bold
+
 echo "a.o的段属性"
 objdump -h a.o
-
-split
-echo "b.o的段属性"
-objdump -h b.o
-
-split
-echo "ab.o的段属性"
-objdump -h ab
 
 split
 echo "a.c的汇编"
 objdump -d a.o
 
 split
+echo "a.o的其他信息"
+readelf --all a.o
+
+####################################
+
+echo "b.o的所有"
+split_bold
+
+echo "b.o的段属性"
+objdump -h b.o
+
+split
 echo "b.c的汇编"
 objdump -d b.o
+
+split
+echo "b.o的其他信息"
+readelf --all b.o
+
+####################################
+
+echo "ab的所有"
+split_bold
+
+echo "ab.o的段属性"
+objdump -h ab
 
 split
 echo "ab的汇编"
 objdump -d ab
 
 split
-echo "a.o的所有信息"
-readelf --all a.o
-
-split
-echo "b.o的所有信息"
-readelf --all b.o
-
-split
-echo "ab的所有信息"
+echo "ab的其他信息"
 readelf --all ab
