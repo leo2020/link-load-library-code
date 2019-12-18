@@ -30,3 +30,27 @@ objdump -h b.o
 split
 echo "ab.o的段属性"
 objdump -h ab
+
+split
+echo "a.c的汇编"
+objdump -d a.o
+
+split
+echo "b.c的汇编"
+objdump -d b.o
+
+split
+echo "ab的汇编"
+objdump -d ab
+
+split
+echo "a.o的所有信息"
+readelf --all a.o
+
+split
+echo "b.o的所有信息"
+readelf --all b.o
+
+split
+echo "ab的所有信息"
+readelf --all ab
