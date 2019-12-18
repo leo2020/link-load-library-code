@@ -29,4 +29,4 @@ objdump -h b.o
 
 split
 echo "ab.o的段属性"
-objdump -h ab.o
+objdump -h ab
