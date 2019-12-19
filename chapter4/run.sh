@@ -15,7 +15,8 @@ is_mac(){
 
 echo "编译 a.c , b.c:"
 #gcc -c -m32 -fno-builtin -fno_protect_stack a.c b.c
-gcc -c -fno-stack-protector  -m32 a.c b.c
+#gcc -c -fno-stack-protector  -m32 a.c b.c
+gcc -c a.c b.c -fPIC -g -Wall -m32
 
 split
 echo "链接a.o/b.o:"
@@ -26,7 +27,7 @@ ld -static -m elf_i386 -e main b.o a.o -o ab
 
 ####################################
 
-echo "a.o的所有"
+echo -e "\na.o的所有"
 split_bold
 
 echo "a.o的段属性"
@@ -42,7 +43,7 @@ readelf --all a.o
 
 ####################################
 
-echo "b.o的所有"
+echo -e "b.o的所有"
 split_bold
 
 echo "b.o的段属性"
@@ -69,5 +70,5 @@ echo "ab的汇编"
 objdump -d ab
 
 split
-echo "ab的其他信息"
+echo -e "ab的其他信息"
 readelf --all ab
