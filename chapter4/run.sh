@@ -16,7 +16,8 @@ is_mac(){
 echo "编译 a.c , b.c:"
 #gcc -c -m32 -fno-builtin -fno_protect_stack a.c b.c
 #gcc -c -fno-stack-protector  -m32 a.c b.c
-gcc -c a.c b.c -fPIC -g -Wall -m32
+#gcc -c a.c b.c -fPIC -g -Wall -m32
+gcc -c -fno-stack-protector  -m32 a.c b.c
 
 split
 echo "链接a.o/b.o:"
